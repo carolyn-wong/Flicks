@@ -21,7 +21,7 @@ The following **stretch** features are implemented:
 
 The following **additional** features are implemented:
 
-* [x] Added an image placeholder and title text for a recommended movie based on the currently viewed movie. 
+* [x] Added an image placeholder and title text for a recommended movie based on the movie being currently viewed. 
 
 ## Video Walkthrough
 

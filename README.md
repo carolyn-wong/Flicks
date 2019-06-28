@@ -22,8 +22,7 @@ The following **stretch** features are implemented:
 The following **additional** features are implemented:
 
 * [x] Added an image placeholder and title text for a recommended movie based on the movie being currently viewed. 
-
-In progress on branch 'recommendations-recycler': addition of call to movie API and adapter to display a horizontally scrollable list of movie titles/posters recommended based on the movie being currently viewed.
+* [ ] In progress on branch 'recommendations-recycler': addition of call to movie API and adapter to display a horizontally scrollable list of movie titles/posters recommended based on the movie being currently viewed.
 
 ## Video Walkthrough
 
@@ -36,7 +35,7 @@ GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 ## Notes
 
-Asynchronous calls were confusing at first!
+Asynchronous calls were confusing at first, but TJ's explanation was very helpful!
 
 ## License
 

@@ -23,6 +23,8 @@ The following **additional** features are implemented:
 
 * [x] Added an image placeholder and title text for a recommended movie based on the movie being currently viewed. 
 
+In progress on branch 'recommendations-recycler': addition of call to movie API and adapter to display a horizontally scrollable list of movie titles/posters recommended based on the movie being currently viewed.
+
 ## Video Walkthrough
 
 Here's a walkthrough of implemented user stories:

@@ -45,19 +45,13 @@ public class Movie {
         return overview;
     }
 
-    public String getPosterPath() {
-        return posterPath;
-    }
+    public String getPosterPath() { return posterPath; }
 
     public String getBackdropPath() {
         return backdropPath;
     }
 
-    public Double getVoteAverage() {
-        return voteAverage;
-    }
+    public Double getVoteAverage() { return voteAverage; }
 
-    public Integer getId() {
-        return id;
-    }
+    public Integer getId() { return id; }
 }

@@ -39,6 +39,7 @@ public class MovieTrailerActivity extends YouTubeBaseActivity {
         // set request parameters (appended to URL)
         RequestParams params = new RequestParams();
         params.put(API_KEY_PARAM, getString(R.string.api_key)); // API key, always required
+        client = new AsyncHttpClient();
         // GET request expecting JSON object response
         client.get(url, params, new JsonHttpResponseHandler() {
             @Override
@@ -49,7 +50,28 @@ public class MovieTrailerActivity extends YouTubeBaseActivity {
                     JSONArray results = response.getJSONArray("results");
                     // assign YouTube key from JSON object
                     ytId = results.getJSONObject(0).getString("key");
-                    Log.i(TAG, "Returned movie YouTube id");
+                    Log.i(TAG, "Returned movie YouTube id" + ytId);
+
+                    // resolve player view from layout
+                    YouTubePlayerView playerView = (YouTubePlayerView) findViewById(R.id.player);
+
+
+                    // initialize with API key stored in secrets.xml
+                    playerView.initialize(getString(R.string.youtube_key), new YouTubePlayer.OnInitializedListener() {
+                        @Override
+                        public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer youTubePlayer, boolean b) {
+                            // do work here to cue or play video, etc.
+                            youTubePlayer.cueVideo(ytId);
+                        }
+
+                        @Override
+                        public void onInitializationFailure(YouTubePlayer.Provider provider, YouTubeInitializationResult youTubeInitializationResult) {
+                            // log error
+                            Log.e("MovieTrailerActivity", "Error initializing YouTube player");
+                        }
+                    });
+
+
                 } catch (JSONException e) {
                     logError("Failed to parse movie videos link", e, true);
                 }
@@ -69,31 +91,9 @@ public class MovieTrailerActivity extends YouTubeBaseActivity {
         int movieId = (Integer) getIntent().getExtras().getInt("movie_id");
         Log.i("MOVIE ID", Integer.toString(movieId));
 
-        // TODO - add try catch statement?? or probably not since the code already accounts for this
-
-        // TODO can't access api key in secrets file
+        // TODO - add try catch statement?? code may already account for this
         getYouTube(Integer.toString(movieId));
 
-        // temporary test video id -- TODO replace with movie trailer video id
-        final String videoId = ytId;
-
-        // resolve player view from layout
-        YouTubePlayerView playerView = (YouTubePlayerView) findViewById(R.id.player);
-
-        // initialize with API key stored in secrets.xml
-        playerView.initialize(getString(R.string.youtube_key), new YouTubePlayer.OnInitializedListener() {
-            @Override
-            public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer youTubePlayer, boolean b) {
-                // do work here to cue or play video, etc.
-                youTubePlayer.cueVideo(videoId);
-            }
-
-            @Override
-            public void onInitializationFailure(YouTubePlayer.Provider provider, YouTubeInitializationResult youTubeInitializationResult) {
-                // log error
-                Log.e("MovieTrailerActivity", "Error initializing YouTube player");
-            }
-        });
     }
 
     // handle errors, log and alert user of silent failures (if indicated)

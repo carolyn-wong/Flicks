@@ -30,7 +30,7 @@ public class MovieDetailsActivity extends AppCompatActivity {
     ImageView ivTrailerImage;
     String trailerUrl;
 
-    // TODO - add config instead of passing in image url as an intent?
+    // add config instead of passing in image url as an intent?
     // context for rendering
     // Context context;
 
@@ -75,7 +75,6 @@ public class MovieDetailsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(movie.getId()==null) {
-                    // TODO - find out what exactly this movie id is! if a movie doesn't have an id, does it not exist?
                     Toast.makeText(getApplicationContext(), "Movie id does not exist", Toast.LENGTH_SHORT).show();
                 }
                 else {

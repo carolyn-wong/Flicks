@@ -1,4 +1,4 @@
-# Project 2 - Flixster
+# Project 2 - Flicks
 
 Flixster is an android app that allows users to view a movie list with posters, title, and overview, as well as view individual movie ratings and trailers.
 
